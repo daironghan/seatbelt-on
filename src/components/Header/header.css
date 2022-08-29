@@ -1,22 +1,21 @@
 
-ul {
+.headerContainer ul {
     list-style-type: none; /*remove bullet points*/
     margin: 0;
     padding: 0;
-
 }
-li {
+.headerItem {
     /*display: inline;*/
     float: right;
 }
-li a {
+.headerItem a {
     display: block;
     /*padding: 0px 8px 0px 8px;*/
 
     /*line-height: 80px;*/
     height: 80px;
 }
-.navbarContainer {
+.headerContainer {
     width: 100%;
     height: 80px;
     background-color: #31383b;
@@ -54,7 +53,7 @@ li a {
     border: none;
     text-decoration: none;
     cursor: pointer;
-    background-color: #31383b;
+    background-color: transparent;
     background-image: url("../../../public/images/UI_Header_wallet\ button.png");
     background-size: contain;
     background-repeat: no-repeat;

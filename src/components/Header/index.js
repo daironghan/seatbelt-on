@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {ethers} from 'ethers'
-import "./index.css";
+import "./header.css";
 //import './WalletCard.css'
 
 const Header = () => {
@@ -43,14 +43,14 @@ const Header = () => {
 	
 	return (
         <>
-		<div className='navbarContainer'>
+		<div className='headerContainer'>
             <ul id="navlist">
-                <li style={{float:'left'}} id="logo"><a href="default.asp"></a></li>
-                <li>
+                <li style={{float:'left'}} id="logo" className='headerItem'><a href="default.asp"></a></li>
+                <li  className='headerItem'>
                     <button id="wallet" onClick={connectWalletHandler}></button>
                 </li>
-                <li id="opensea"><a href="contact.asp"></a></li>
-                <li id="twitter"><a href="https://twitter.com/oseatbelt?s=11&t=PLKlEa57_vOAcgILg7NImw"></a></li>
+                <li id="opensea" className='headerItem'><a href="contact.asp"></a></li>
+                <li id="twitter" className='headerItem'><a href="https://twitter.com/oseatbelt?s=11&t=PLKlEa57_vOAcgILg7NImw"></a></li>
             </ul>
         </div>
         <div className='accountDisplay'>
@@ -65,4 +65,3 @@ const Header = () => {
 }
 
 export default Header;
-/*<button id="wallet" onClick={connectWalletHandler}>{connButtonText}</button>*/

@@ -1,0 +1,61 @@
+.navbarContainer {
+    width: 100%;
+    height: 80px;
+    align-items: center;
+}
+.navbarContainer ul {
+    list-style-type: none; /*remove bullet points*/
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.navItem {
+    display: inline-block;
+    margin: 0px 8px 0px 8px;
+}
+.navItem a {
+    display: block;
+    height: 80px;
+}
+#mint {
+    width: 37px;
+    background-image: url("../../../public/images/UI_Menu_button_mint.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#intro {
+    width: 48px;
+    background-image: url("../../../public/images/UI_Menu\ button_intro.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#feature {
+    width: 70px;
+    background-image: url("../../../public/images/UI_Menu\ button_feature.png");
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#sneakpeak {
+    width: 90px;
+    background-image: url("../../../public/images/UI_Menu\ button_sneakpeak.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#team {
+    width: 43px;
+    background-image: url("../../../public/images/UI_Menu\ button_team.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#faqs {
+    width: 38px;
+    background-image: url("../../../public/images/UI_Menu\ button_faqs.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
