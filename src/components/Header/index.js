@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {ethers} from 'ethers'
 import "./header.css";
-//import './WalletCard.css'
 
 const Header = () => {
 
@@ -12,6 +11,7 @@ const Header = () => {
 	const [provider, setProvider] = useState(null);
 
 	const connectWalletHandler = () => {
+        console.log("connect wallet btn")
 		if (window.ethereum && defaultAccount == null) {
 			// set ethers provider
 			setProvider(new ethers.providers.Web3Provider(window.ethereum));
@@ -21,6 +21,7 @@ const Header = () => {
 			.then(result => {
 				//setConnButtonText('Wallet Connected');
 				setDefaultAccount(result[0]);
+                console.log(result[0]);
 			})
 			.catch(error => {
 				setErrorMessage(error.message);
@@ -37,6 +38,7 @@ const Header = () => {
         provider.getBalance(defaultAccount)
         .then(balanceResult => {
             setUserBalance(ethers.utils.formatEther(balanceResult));
+            console.log(ethers.utils.formatEther(balanceResult));
         })
         };
     }, [defaultAccount]);
@@ -53,6 +55,13 @@ const Header = () => {
                 <li id="twitter" className='headerItem'><a href="https://twitter.com/oseatbelt?s=11&t=PLKlEa57_vOAcgILg7NImw"></a></li>
             </ul>
         </div>
+
+        </>
+	);
+}
+
+export default Header;
+        /*
         <div className='accountDisplay'>
             <h3>Address: {defaultAccount}</h3>
         </div>
@@ -60,8 +69,4 @@ const Header = () => {
             <h3>Balance: {userBalance}</h3>
         </div>
         {errorMessage}
-        </>
-	);
-}
-
-export default Header;
+        */

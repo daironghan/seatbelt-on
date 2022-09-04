@@ -1,0 +1,12 @@
+.faqsContainer {
+    width: 730px;
+    max-width: 730px;
+    height: 400px;
+    text-align: center;
+    margin: auto;
+}
+.faqsContainer img {
+    width: 100px;
+    margin: 15px;
+    
+}

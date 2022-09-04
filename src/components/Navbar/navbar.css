@@ -1,13 +1,12 @@
 .navbarContainer {
     width: 100%;
-    height: 80px;
-    align-items: center;
+    height: 60px;
+    text-align: center;
 }
 .navbarContainer ul {
     list-style-type: none; /*remove bullet points*/
-    margin: 0;
+    margin: auto;
     padding: 0;
-    text-align: center;
 }
 .navItem {
     display: inline-block;
@@ -15,9 +14,10 @@
 }
 .navItem a {
     display: block;
-    height: 80px;
+    height: 60px;
 }
 #mint {
+    margin-left: 80px;
     width: 37px;
     background-image: url("../../../public/images/UI_Menu_button_mint.png");
     background-size: contain;

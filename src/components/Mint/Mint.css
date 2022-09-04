@@ -1,0 +1,11 @@
+.mintContainer {
+    margin: auto;
+    max-width: 800px;
+    height: 700px;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.mintContainer img {
+    width: 100%;
+}

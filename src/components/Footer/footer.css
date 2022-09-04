@@ -1,0 +1,65 @@
+
+.footerContainer ul {
+    list-style-type: none; /*remove bullet points*/
+    margin: 0;
+    padding: 0;
+}
+.footerItem {
+    float: right;
+    height: 80px;
+}
+.footerItem a {
+    display: block;
+
+}
+.footerContainer {
+    width: 100%;
+    height: 80px;
+    background-color: #31383b;
+    padding: 0px 15px 0px 15px;
+}
+#logo {
+    width: 375px;
+    background-image: url("../../../public/images/UI_Header_title.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#twitter {
+    width: 30px;
+    margin: 0px 8px 0px 8px;
+    background-image: url("../../../public/images/UI_Header-Footer_twitter\ icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#opensea {
+    width: 30px;
+    margin: 0px 8px 0px 8px;
+    background-image: url("../../../public/images/UI_Header-Footer_opensea\ icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#rights {
+    margin: 0px 8px 0px 8px;
+    width: 200px;
+    background-image: url("../../../public/images/UI_Footer_all\ right\ reserved.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#wallet {
+    width: 80px;
+    height: 80px;
+    margin: 0px 8px 0px 8px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url("../../../public/images/UI_Header_wallet\ button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
