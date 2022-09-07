@@ -6,6 +6,26 @@
     z-index: 1;
 }
 
-.mintContainer img {
-    width: 100%;
+#ticket {
+    width: 800px;
+    position: absolute;
+    float: right;
+    z-index: -1;
+}
+#mintBtn {
+    width: 80px;
+    height: 80px;
+    margin: 200px 0px 0px 530px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url('../../../public/images/UI_Ticket\ button_mint_default.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 2;
+}
+#mintBtn:hover {
+    background-image: url('../../../public/images/UI_Ticket\ button_mint_action.png');
 }

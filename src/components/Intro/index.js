@@ -5,7 +5,7 @@ import "./intro.css";
 const Intro = () => {
     return (
         <>
-            <div className='introContainer'>
+            <div className='introContainer' id='introContainer'>
             <img src={require('../../images/UI_Notebook.png')} alt='ticket'></img>
             </div>
         </>

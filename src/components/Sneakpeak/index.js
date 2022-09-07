@@ -4,7 +4,7 @@ import "./sneakpeak.css";
 const Sneakpeak = () => {
     return (
         <>
-            <div className='sneakpeakContainer'>
+            <div className='sneakpeakContainer' id='sneakpeakContainer'>
             </div>
         </>
     );

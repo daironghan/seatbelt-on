@@ -31,6 +31,7 @@ const Header = () => {
 			console.log('Need to install MetaMask');
 			setErrorMessage('Please install MetaMask browser extension to interact');
 		}
+        console.log(defaultAccount);
 	}
 
     useEffect(() => {
@@ -45,9 +46,9 @@ const Header = () => {
 	
 	return (
         <>
-		<div className='headerContainer'>
+		<div className='headerContainer' id='headerContainer'>
             <ul id="navlist">
-                <li style={{float:'left'}} id="logo" className='headerItem'><a href="default.asp"></a></li>
+                <li style={{float:'left'}} id="logo" className='headerItem'><a href='#headerContainer'></a></li>
                 <li  className='headerItem'>
                     <button id="wallet" onClick={connectWalletHandler}></button>
                 </li>

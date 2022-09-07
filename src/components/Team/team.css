@@ -4,8 +4,18 @@
     height: 400px;
     text-align: center;
     margin: auto;
+    margin-bottom: 20px;
 }
-.teamContainer img {
+.teamLabelContainer {
+    width: 100%;
+    height: 30px;
+}
+.teamLabelContainer img {
+    width: 120px;
+    float: right;
+    margin-right: 100px;
+}
+.teamMemberContainer img {
     width: 100px;
     margin: 15px;
     
