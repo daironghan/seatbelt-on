@@ -5,15 +5,40 @@
     text-align: center;
     margin: auto;
     margin-bottom: 20px;
+    margin-top: 20px;
+}
+.teamIntroContainer {
+    width: 800px;
+
+    height: 350px;
+    position: absolute;
+    top: 2100px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+}
+.teamIntroContainer p {
+    font-size: 17px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: normal;
+    color: #32383a;
 }
 .teamLabelContainer {
+
     width: 100%;
     height: 30px;
+    margin-bottom: 10px;
 }
 .teamLabelContainer img {
+    
     width: 120px;
     float: right;
     margin-right: 100px;
+}
+.teamIntroContainer p {
+    width: 400px;
+    float: right;
 }
 .teamMemberContainer img {
     width: 105px;

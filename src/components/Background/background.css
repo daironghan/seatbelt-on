@@ -1,14 +1,14 @@
 .backgroundContainer {
     height: 2000px;
-    width: 800px;
+    width: 900px;
     max-width: 1100px;
     background-image: url("/public/images/UI_3_Background.svg");
-    background-size: contain;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: bottom;
     z-index: -100;
     position: absolute;
-    top: 1500px;
+    top: 2300px;
     left: 0;
     right: 0;
     bottom: 0;

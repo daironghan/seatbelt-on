@@ -1,7 +1,7 @@
 .mintContainer {
     margin: auto;
     max-width: 100%;
-    height: 1280px;
+    height: 1650px;
     background-color: transparent;
     position: relative;
     z-index: 2;
@@ -17,7 +17,7 @@
 }
 /*count down*/
 .counterContainer .seatsLeft {
-    margin-right: 45px;
+    margin-right: 40px;
 }
 .countUnitContainer {
     margin-left: 47px;
@@ -208,7 +208,7 @@
     margin-left: 230px;
 }
 .publicMintContainer .seatsLeft {
-    margin-right: 10px;
+    margin-right: 20px;
     margin-top: 13px;
 }
 

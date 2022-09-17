@@ -1,15 +1,15 @@
 .faqsContainer {
     width: 800px;
     max-width: 800px;
-    height: 450px;
+    height: 530px;
     text-align: center;
     margin: auto;
-
 }
 .questionContainer {
-    width: 350px;
+    width: 400px;
 }
 .faqsLabelContainer {
+
     width: 100%;
     height: 30px;
 }
@@ -18,6 +18,7 @@
     float: left;
 }
 .dropdown {
+    width: 100%;
     position: relative;
     display: inline-block;
 }
@@ -27,7 +28,7 @@
     background-color: white;
     border-radius: 20px;
     border: 2px solid #31383b;
-    width: 350px;
+    width: 100%;
     font-weight: bold;
     font-family: 'Noto Sans', sans-serif;
     color: #31383b;

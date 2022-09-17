@@ -12,15 +12,15 @@ const Header = () => {
 
 	const connectWalletHandler = () => {
         console.log("connect wallet btn")
-		if (window.ethereum && defaultAccount == null) {
+
+		if (window.ethereum && window.ethereum.isMetaMask) {
 			// set ethers provider
 			setProvider(new ethers.providers.Web3Provider(window.ethereum));
 
 			// connect to metamask
 			window.ethereum.request({ method: 'eth_requestAccounts'})
 			.then(result => {
-				//setConnButtonText('Wallet Connected');
-				setDefaultAccount(result[0]);
+                accountChangedHandler(result[0])
                 console.log(result[0]);
 			})
 			.catch(error => {
@@ -31,18 +31,35 @@ const Header = () => {
 			console.log('Need to install MetaMask');
 			setErrorMessage('Please install MetaMask browser extension to interact');
 		}
-        console.log(defaultAccount);
 	}
 
+    const accountChangedHandler = (newAccount) => {
+        setDefaultAccount(newAccount);
+    }
+
+    const chainChangedHandler = (chainID) => {
+        window.location.reload();
+        if(chainID !== "0x4") {
+            console.log("Please connect to Rinkeby Testnet.")
+        }
+    }
+
+    window.ethereum.on('accountsChanged', accountChangedHandler);
+    
+    window.ethereum.on('chainChanged', (chainID) => {
+        chainChangedHandler(chainID);
+    });
+    
+    /*
     useEffect(() => {
-        if(defaultAccount){
+        if(defaultAccount!==null){
         provider.getBalance(defaultAccount)
         .then(balanceResult => {
             setUserBalance(ethers.utils.formatEther(balanceResult));
             console.log(ethers.utils.formatEther(balanceResult));
         })
         };
-    }, [defaultAccount]);
+    }, [defaultAccount]);*/
 	
 	return (
         <>
@@ -62,12 +79,3 @@ const Header = () => {
 }
 
 export default Header;
-        /*
-        <div className='accountDisplay'>
-            <h3>Address: {defaultAccount}</h3>
-        </div>
-        <div className='balanceDisplay'>
-            <h3>Balance: {userBalance}</h3>
-        </div>
-        {errorMessage}
-        */

@@ -82,13 +82,29 @@ const ExpiredNotice = () => {
 };
 
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
+
+  const contractAddress = "0xa261C11aCa152da4dA61aaaEb0a44cE83af6bE34";
+  const [seatsLeft, setSeatsLeft] = useState(3333);
+  
+  useEffect (() => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const nftContract = new ethers.Contract(contractAddress, abi, provider);
+        const fetchData = async () => {
+            let bg = await nftContract.totalSupply();
+            const sleft = 3333 - Number(bg);
+            setSeatsLeft(sleft);
+        }
+
+        fetchData()
+  }, []);
+
   return (
     <div className="show-counter">
 
         <img id='freeTicket' src={require('../../images/UI_3_Ticket1.png')} alt='ticket'></img> 
         <div className='counterContainer'>
           <p className='boardingTime'>2022/9/27 00:00:00</p>
-          <p className='seatsLeft'>3333/3333</p>
+          <p className='seatsLeft'>{seatsLeft}/3333</p>
           <div className='countUnitContainer'>
             <div className='counter-unit'>{days}</div>
             <div className='counter-unit'>{hours}</div>
