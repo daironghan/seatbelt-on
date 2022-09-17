@@ -1,12 +1,50 @@
 .sneakpeakContainer {
     width: 800px;
     max-width: 800px;
-    height: 500px;
+    height: 450px;
     background-color: transparent;
-    background-image: url("../../images/UI_iPad.png");
+    background-image: url("../../../public/images/UI_3_iPad.svg");
     background-size: 300px;
     background-repeat: no-repeat;
     background-position: left bottom;
     margin: auto;
-    margin-bottom: 15px;
+    margin-bottom: 50px;
+    position: relative;
+    -webkit-transform: rotate(-7deg);
+    -moz-transform: rotate(-7deg);
+    -o-transform: rotate(-7deg);
+    -ms-transform: rotate(-7deg);
+    transform: rotate(-7deg);
+}
+.sliderContainer {
+    width: 230px;
+    height: 350px;
+    margin-left: 35px;
+    position: absolute;
+    top: 70px
+}
+.slider {
+    height: 100%;
+
+}
+.buttonContainer {
+    padding: 6px;
+    height: 30px;
+    width: 100%;
+}
+#leftBtn {
+    margin-left: 160px;
+    height: 20px;
+    width: 20px;
+    border: none;
+    background-image: url("../../../public/images/UI_3_iPad\ button_backward.svg");
+    cursor: pointer;
+}
+#rightBtn {
+    margin-left: 10px;
+    height: 20px;
+    width: 20px;
+    border: none;
+    background-image: url("../../../public/images/UI_3_iPad\ button_forward.svg");
+    cursor: pointer;
 }

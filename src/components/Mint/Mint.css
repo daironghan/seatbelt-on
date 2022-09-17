@@ -1,21 +1,136 @@
 .mintContainer {
     margin: auto;
-    max-width: 800px;
-    height: 700px;
+    max-width: 100%;
+    height: 1280px;
     background-color: transparent;
-    z-index: 1;
-}
+    position: relative;
+    z-index: 2;
 
-#ticket {
-    width: 800px;
+}
+/*ticket one*/
+.show-counter, .expired-notice{
+    height: 1000px;
+    position: absolute;
+    width: 100%;
+    margin-left: 0px;
+    top: 0px; 
+}
+/*count down*/
+.counterContainer .seatsLeft {
+    margin-right: 45px;
+}
+.countUnitContainer {
+    margin-left: 47px;
+    margin-top: 50px;
+}
+.counter-unit {
+    text-align: center;
+    margin: 18px;
+    width: 50px;
+    display: inline-block;
+    font-size: 50px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    color: #32383a;
+}
+.boardingTime {
+    color: #32383a;
+    font-size: 18px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    margin-left: 230px;
+    margin-top: 95px;
+}
+.seatsLeft {
+    color: #32383a;
+    font-size: 22px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    margin-right: 30px;
+    margin-left: auto;
+    margin-top: 10px;
+    float: right;
+}
+/*free mint*/
+#freeTicket {
+    display: block;
     position: absolute;
     float: right;
-    z-index: -1;
+    z-index: -10;
+    height: 100%;
+    width: auto;
+    right: 0;
+    left: auto;
 }
-#mintBtn {
+.freeMintContainer, .counterContainer {
+    position: absolute;
+    width: 600px;
+    height: 300px;
+    right: 350px;
+    top: 13px;
+    z-index: 3;
+    -webkit-transform: rotate(-8deg);
+    -moz-transform: rotate(-8deg);
+    -o-transform: rotate(-8deg);
+    -ms-transform: rotate(-8deg);
+    transform: rotate(-8deg);
+}
+
+.freeMintContainer input {
+    background-color: #f5f7f9;
+    border: none;
+    margin-top: 110px;
+    margin-left: 60px;
+    line-height: 30px;
+    width: 330px;
+}
+#freeMintBtn {
+    position: absolute;
     width: 80px;
     height: 80px;
-    margin: 200px 0px 0px 530px;
+    margin-top: 70px;
+    margin-left: 70px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url('../../../public/images/UI_3_Ticket\ button_freemint_default.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+}
+#freeMintBtn:hover {
+    background-image: url('../../../public/images/UI_3_Ticket\ button_freemint_hover.svg');
+}
+/*public mint*/
+#mintTicket {
+    height: 1000px;
+    position: absolute;
+    top: 350px;
+    float: right;
+    z-index: -5;
+}
+.publicMintContainer {
+    position: absolute;
+    top: 400px;
+    width: 600px;
+    height: 300px;
+    margin-left: 300px;
+    z-index: 3;
+    -webkit-transform: rotate(-8deg);
+    -moz-transform: rotate(-8deg);
+    -o-transform: rotate(-8deg);
+    -ms-transform: rotate(-8deg);
+    transform: rotate(-8deg);
+}
+
+#mintBtn {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    margin-top: -70px;
+    margin-left: 480px;
     border: none;
     text-decoration: none;
     cursor: pointer;
@@ -24,8 +139,76 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 2;
+    z-index: 1;
 }
 #mintBtn:hover {
-    background-image: url('../../../public/images/UI_Ticket\ button_mint_action.png');
+    background-image: url('../../../public/images/UI_3_Ticket\ button_mint_hover.svg');
 }
+#mintBtn:disabled {
+    background-image: url('../../../public/images/UI_3_Ticket\ button_mint_disable.svg');
+}
+.publicMintContainer input {
+    opacity: 0;
+}
+.radioContainer {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 35px;
+}
+.radioContainer .inputContainer {
+    position: relative;
+    height: 60px;
+    width: 45px;
+    margin: 14px;
+    
+}
+.radioContainer .inputContainer .radioBtn {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+}
+  .radioContainer .inputContainer .radioTile {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    border-radius: 3px;
+    transition: transform 300ms ease;
+  }
+.radioContainer .inputContainer .radioTile label {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #32383a;
+    font-size: 50px;
+    font-family: 'Noto Sans', sans-serif;
+}
+  .radioContainer .inputContainer .radioBtn:checked + .radioTile {
+    background-color: #32383a;
+    color: white;
+    transform: scale(1.1, 1.1);
+  }
+  .radioContainer .inputContainer .radioBtn:checked + .radioTile label {
+    color: white;
+  }
+.publicMintContainer .boardingTime {
+    margin-top: 68px;
+    margin-left: 230px;
+}
+.publicMintContainer .seatsLeft {
+    margin-right: 10px;
+    margin-top: 13px;
+}
+

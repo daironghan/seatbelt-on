@@ -5,14 +5,45 @@
     /*overlap*/
     z-index: -10;
     position: absolute;
-    top: 800px;
+    top: 1250px;
     left: 0;
     right: 0;
     bottom: 740px;
     margin: auto;
+    
 }
 
 .introContainer img {
-    width: 65%;
+    width: 80%;
     float: right;
+}
+
+#introText{
+    position: absolute;
+    width: 220px;
+    margin-top: 65px;
+    margin-left: 250px;
+    -webkit-transform: rotate(10deg);
+    -moz-transform: rotate(10deg);
+    -o-transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+    transform: rotate(10deg);
+    font-family: 'Noto Sans', sans-serif;
+    color: #31383b;
+    font-weight: normal;
+}
+
+#featureText {
+    position: absolute;
+    width: 240px;
+    margin-top: 330px;
+    margin-left: 500px;
+    -webkit-transform: rotate(6deg);
+    -moz-transform: rotate(6deg);
+    -o-transform: rotate(6deg);
+    -ms-transform: rotate(6deg);
+    transform: rotate(6deg);
+    font-family: 'Noto Sans', sans-serif;
+    color: #31383b;
+    font-weight: normal;
 }
