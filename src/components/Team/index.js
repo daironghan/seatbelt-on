@@ -21,16 +21,62 @@ const Team = () => {
             <div className='teamContainer' id='teamContainer'>
                 
                 <div className='teamMemberContainer'>
-                    <img src={require('../../images/UI_Photo.png')} alt='team' />
+                    <div className='memberContainer'>
+                        <a href="https://twitter.com/michtsai13" target="_blank"><img src={require('../../images/Mich.png')}/></a>
+                        <div className='member'>
+                            <p id='memberName'>Mich Tsai</p>
+                            <p id='memberRole'>Founder / Artist</p>
+                        </div> 
+                    </div>
+                    <div className='memberContainer'>
+                        <a href='https://twitter.com/darrenlu86'  target="_blank"><img src={require('../../images/Darren.png')} /></a>
+                        <div className='member'>
+                            <p id='memberName'>Darren Lu</p>
+                            <p id='memberRole'>CoFounder / Handyman</p>
+                        </div> 
+                    </div>
+                    <div className='memberContainer'>
+                        <img src={require('../../images/Dairong.png')} />
+                        <div className='member'>
+                            <p id='memberName'>Dai-Rong Han</p>
+                            <p id='memberRole'>Front-End Developer</p>
+                        </div> 
+                    </div>
+                    <div className='memberContainer'>
+                        <img src={require('../../images/Bonnnie.png')} />
+                        <div className='member'>
+                            <p id='memberName'>Bonnie</p>
+                            <p id='memberRole'>Back-End Developer</p>
+                        </div> 
+                    </div>
+                    <div className='memberContainer'>
+                        <img src={require('../../images/湘菱.png')} />
+                        <div className='member'>
+                            <p id='memberName'>湘菱</p>
+                            <p id='memberRole'>Back-End Developer</p>
+                        </div> 
+                    </div>
+                    <div className='memberContainer'>
+                        <img src={require('../../images/Evan.png')} />
+                        <div className='member'>
+                            <p id='memberName'>Evan</p>
+                            <p id='memberRole'>Mascot</p>
+                        </div> 
+                    </div>
+                    <div className='memberContainer'>
+                        <img src={require('../../images/祐麟.png')} />
+                        <div className='member'>
+                            <p id='memberName'>祐麟</p>
+                            <p id='memberRole'>Mascot</p>
+                        </div> 
+                    </div>
+{/*                   
                     <img src={require('../../images/UI_Photo.png')} alt='team' />  
                     <img src={require('../../images/UI_Photo.png')} alt='team' />  
                     <img src={require('../../images/UI_Photo.png')} alt='team' />  
                     <img src={require('../../images/UI_Photo.png')} alt='team' />  
                     <img src={require('../../images/UI_Photo.png')} alt='team' />
-                    <img src={require('../../images/UI_Photo.png')} alt='team' />  
-                    <img src={require('../../images/UI_Photo.png')} alt='team' />  
-                    <img src={require('../../images/UI_Photo.png')} alt='team' />  
-                    <img src={require('../../images/UI_Photo.png')} alt='team' />
+                    <img src={require('../../images/UI_Photo.png')} alt='team' />   */}
                 </div>
             </div>
         </>

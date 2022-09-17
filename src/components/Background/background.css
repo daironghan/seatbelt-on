@@ -4,11 +4,11 @@
     max-width: 1100px;
     background-image: url("/public/images/UI_3_Background.svg");
     background-size: 100%;
-    background-repeat: no-repeat;
+    background-repeat: re;
     background-position: bottom;
     z-index: -100;
     position: absolute;
-    top: 2300px;
+    top: 2500px;
     left: 0;
     right: 0;
     bottom: 0;

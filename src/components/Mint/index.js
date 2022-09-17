@@ -23,30 +23,6 @@ const Mint = () => {
     //const NOW_MS = new Date().getTime();
     const launchDate = LAUNCH_MS;
     const luanchWhite = new Date("2022/9/17 14:11:00");
-
-    /*
-    const connectWalletHandler = () => {
-        console.log("connect wallet btn")
-		if (window.ethereum && defaultAccount == null) {
-			// set ethers provider
-			setProvider(new ethers.providers.Web3Provider(window.ethereum));
-
-			// connect to metamask
-			window.ethereum.request({ method: 'eth_requestAccounts'})
-			.then(result => {
-				//setConnButtonText('Wallet Connected');
-				setDefaultAccount(result[0]);
-                console.log(result[0]);
-			})
-			.catch(error => {
-				setErrorMessage(error.message);
-			});
-
-		} else if (!window.ethereum){
-			console.log('Need to install MetaMask');
-			setErrorMessage('Please install MetaMask browser extension to interact');
-		}
-	}*/
     
     const mintHandler = async () => {
         try {
@@ -89,38 +65,6 @@ const Mint = () => {
     const radioHandler = async (e) => {
         setMintAmount(e.target.value);
     }
-    /*
-    useEffect(() => {
-        if(defaultAccount){
-        provider.getBalance(defaultAccount)
-        .then(balanceResult => {
-            setUserBalance(ethers.utils.formatEther(balanceResult));
-            console.log(ethers.utils.formatEther(balanceResult));
-        })
-        };
-    }, [defaultAccount]);*/
-
-    /*
-    useEffect(() => {
-        if (performance.navigation.type === 1) {
-            
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const nftContract = new ethers.Contract(contractAddress, abi, provider);
-            const fetchData = async () => {
-                let bg = await nftContract.totalSupply();
-                const sleft = 3333 - Number(bg);
-                setSeatsLeft(sleft);
-            }
-
-            fetchData()
-            
-            if( new Date(launchDate).getTime() < new Date().getTime()) {
-                setDisable(false);
-            }else {
-                setDisable(true);
-            }
-        }
-      },[]);*/
 
     useEffect (() => {
 

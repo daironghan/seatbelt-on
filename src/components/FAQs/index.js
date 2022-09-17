@@ -16,7 +16,7 @@ const FAQs = () => {
                             What blockchain will Seatbelt On! reside on?
                             <div className='questionContent'>
                                 <hr></hr>
-                                <p>Seatbelt On! will reside on the Etheruem（ETH）blockchain and use ERC-721A.</p>
+                                <p>Seatbelt On! will reside on the Etheruem(ETH) blockchain and use ERC-721A.</p>
                             </div>
                         </div>
                     </div>
@@ -25,16 +25,16 @@ const FAQs = () => {
                             When will Seatbelt On! launch?          
                             <div className='questionContent'>
                                 <hr></hr>
-                                <p>SeatBelt On!’s launch process will begin 27 September(2022).</p>
+                                <p>SeatBelt On!'s launch process will begin 27 September(2022).</p>
                             </div>
                         </div>
                     </div>
                     <div className='dropdown'>
                         <div className='question'>
-                            How much is the Seatbelt On!  Mint Price？
+                            How much is the Seatbelt On!  Mint Price?
                             <div className='questionContent'>
                                 <hr></hr>
-                                <p>"Mint Price is Free！（Max:1）
+                                <p>"Mint Price is Free!(Max:1)
                                 If you give Seatbelt On! as a present to your friend, both of you will get 1 Seatbelt On!"</p>
                             </div>
                         </div>
@@ -53,7 +53,7 @@ const FAQs = () => {
                             Does Seatbelt On!  have a roadmap?
                             <div className='questionContent'>
                                 <hr></hr>
-                                <p>No. That’s pure art. Maybe there are some interesting things in the future….</p>
+                                <p>No. That's pure art. Maybe there are some interesting things in the future….</p>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@ const FAQs = () => {
                             How could I to get the Whitelist?
                             <div className='questionContent'>
                                 <hr></hr>
-                                <p>All holders of the projects we love can get whitelist！Those project are Kumo x World, ToriZero, Strangers, StreetLab, LonelyPop, Invisible Friends and Dino Babies.</p>
+                                <p>All holders of the projects we love can get whitelist! Those project are Kumo x World, ToriZero, Strangers, StreetLab, LonelyPop, Invisible Friends and Dino Babies.</p>
                             </div>
                         </div>
                     </div>

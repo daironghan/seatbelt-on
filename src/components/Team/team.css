@@ -1,10 +1,10 @@
 .teamContainer {
-    width: 730px;
-    max-width: 730px;
-    height: 400px;
+    width: 800px;
+    max-width: 800px;
+    height: 580px;
     text-align: center;
     margin: auto;
-    margin-bottom: 20px;
+    margin-bottom: 80px;
     margin-top: 20px;
 }
 .teamIntroContainer {
@@ -12,14 +12,14 @@
 
     height: 350px;
     position: absolute;
-    top: 2100px;
+    top: 2150px;
     left: 0px;
     right: 0px;
     bottom: 0px;
     margin: auto;
 }
 .teamIntroContainer p {
-    font-size: 17px;
+    font-size: 16px;
     font-family: 'Noto Sans', sans-serif;
     font-weight: normal;
     color: #32383a;
@@ -40,8 +40,40 @@
     width: 400px;
     float: right;
 }
+/*
 .teamMemberContainer img {
-    width: 105px;
+    width: 170px;
     margin: 10px;
     
+}*/
+.memberContainer {
+    width: 170px;
+    height: 280px;
+    max-height: 300px;
+    margin: 10px;
+    background-image: url("../../../public/images/UI_Photo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.memberContainer img {
+    margin-top: 25px;
+    width: 120px;
+}
+.memberContainer .member {
+    height: 50px;
+    margin-top: 20px;
+}
+#memberName {
+    font-size: 15px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    color: #32383a;
+    margin-bottom: 3px;
+}
+#memberRole {
+    font-size: 13px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: normal;
+    color: #32383a;
 }

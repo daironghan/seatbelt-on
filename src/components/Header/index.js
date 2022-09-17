@@ -35,13 +35,12 @@ const Header = () => {
 
     const accountChangedHandler = (newAccount) => {
         setDefaultAccount(newAccount);
+        console.log("changed account")
     }
 
     const chainChangedHandler = (chainID) => {
+        
         window.location.reload();
-        if(chainID !== "0x4") {
-            console.log("Please connect to Rinkeby Testnet.")
-        }
     }
 
     window.ethereum.on('accountsChanged', accountChangedHandler);
@@ -70,7 +69,7 @@ const Header = () => {
                     <button id="wallet" onClick={connectWalletHandler}></button>
                 </li>
                 <li id="opensea" className='headerItem'><a href="contact.asp"></a></li>
-                <li id="twitter" className='headerItem'><a href="https://twitter.com/oseatbelt?s=11&t=PLKlEa57_vOAcgILg7NImw"></a></li>
+                <li id="twitter" className='headerItem'><a href="https://twitter.com/oseatbelt?s=11&t=PLKlEa57_vOAcgILg7NImw"  target="_blank"></a></li>
             </ul>
         </div>
 
