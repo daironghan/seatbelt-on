@@ -40,7 +40,7 @@ const ExpiredNotice = () => {
   const receiverHandler = (e) => {
     setReceiverAddress(e.target.value);
   }
-
+/*
   useEffect(() => {
     if(defaultAccount){
     provider.getBalance(defaultAccount)
@@ -49,10 +49,9 @@ const ExpiredNotice = () => {
         console.log(ethers.utils.formatEther(balanceResult));
     })
     };
-  }, [defaultAccount]); 
+  }, [defaultAccount]); */
   useEffect(() => {
-    if (performance.navigation.type === 1) {
-        
+    
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const nftContract = new ethers.Contract(contractAddress, abi, provider);
         const fetchData = async () => {
@@ -63,9 +62,7 @@ const ExpiredNotice = () => {
         // call the function
         fetchData()
 
-    } else {
-      console.log("This page is not reloaded");
-    }
+    
   }, []);
 
   return (

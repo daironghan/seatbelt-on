@@ -40,7 +40,7 @@ const Header = () => {
 
     const chainChangedHandler = (chainID) => {
         
-        window.location.reload();
+        console.log("Please stay on eth chain.")
     }
 
     window.ethereum.on('accountsChanged', accountChangedHandler);
