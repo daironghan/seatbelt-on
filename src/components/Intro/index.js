@@ -5,7 +5,7 @@ import "./intro.css";
 const Intro = () => {
     return (
         <>
-            <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+            <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
             <div className='introContainer' id='introContainer'>
                 <img src={require('../../images/UI_Notebook.png')} alt='ticket'></img>
                 <p id='introText'>"To celebrate the WorldTourismDay, the illustrator @michtsai13 decided to choose ‘TRAVEL’ as the topic to become an NFT project. That’s cus we both love to travel. Also, some people might miss the feeling of taking a trip as much as us since the pandemic began!<br /><br />
