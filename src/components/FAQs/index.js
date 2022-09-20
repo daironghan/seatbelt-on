@@ -4,7 +4,7 @@ import "./faqs.css";
 const FAQs = () => {
     return (
         <>
-        <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+        <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
 
             <div className='faqsContainer' id='faqsContainer'>
                 <div className='faqsLabelContainer'>

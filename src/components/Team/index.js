@@ -4,7 +4,7 @@ import "./team.css";
 const Team = () => {
     return (
         <>  
-            <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+            <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
             <div className='teamIntroContainer'>
                 <div className='teamLabelContainer'>
                         <img src={require('../../images/UI_2_Team_label.png')} alt='ticket'></img>
@@ -50,9 +50,9 @@ const Team = () => {
                         </div> 
                     </div>
                     <div className='memberContainer'>
-                        <img src={require('../../images/湘菱.png')} />
+                        <img src={require('../../images/HsiangLing.png')} />
                         <div className='member'>
-                            <p id='memberName'>湘菱</p>
+                            <p id='memberName'>Hsiang-Ling Chang</p>
                             <p id='memberRole'>Back-End Developer</p>
                         </div> 
                     </div>
@@ -64,19 +64,12 @@ const Team = () => {
                         </div> 
                     </div>
                     <div className='memberContainer'>
-                        <img src={require('../../images/祐麟.png')} />
+                        <img src={require('../../images/Yulin.png')} />
                         <div className='member'>
-                            <p id='memberName'>祐麟</p>
+                            <p id='memberName'>Yu-Lin Chu</p>
                             <p id='memberRole'>Mascot</p>
                         </div> 
                     </div>
-{/*                   
-                    <img src={require('../../images/UI_Photo.png')} alt='team' />  
-                    <img src={require('../../images/UI_Photo.png')} alt='team' />  
-                    <img src={require('../../images/UI_Photo.png')} alt='team' />  
-                    <img src={require('../../images/UI_Photo.png')} alt='team' />  
-                    <img src={require('../../images/UI_Photo.png')} alt='team' />
-                    <img src={require('../../images/UI_Photo.png')} alt='team' />   */}
                 </div>
             </div>
         </>
