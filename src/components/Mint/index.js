@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ethers, utils } from 'ethers'
-import "./mint.css";
+import "./Mint.css";
 import abi from '../abi.json';
 import CountdownTimer from './CountdownTimer';
 import MerkleTree from 'merkletreejs';
