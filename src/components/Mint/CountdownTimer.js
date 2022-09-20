@@ -1,7 +1,7 @@
 import React from 'react';
 import DateTimeDisplay from './DateTimeDisplay';
 import { useCountdown } from '../../hooks/useCountdown';
-import "./mint.css";
+import "./Mint.css";
 import {useState, useEffect} from 'react'
 import {ethers, BigNumber} from 'ethers'
 import abi from '../abi.json';
