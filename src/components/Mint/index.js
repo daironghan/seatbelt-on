@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { ethers, utils } from 'ethers'
-import "./Mint.css";
+import "./mint.css";
 import abi from '../abi.json';
 import CountdownTimer from './CountdownTimer';
+import MerkleTree from 'merkletreejs';
+import { keccak256 } from 'ethers/lib/utils';
+
 // import { keccak256 } from "@ethersproject/keccak256";
 // import { toUtf8Bytes } from "@ethersproject/strings";
-
 
 const Mint = () => {
 
     // const keccak256 = require('keccak256')
-    //const buf2hex = x => '0x' + x.toString('hex')
+    const buf2hex = x => '0x' + x.toString('hex')
+    const { addresses } = require("./Whitelist.js");
     const [errorMessage, setErrorMessage] = useState(null);
     const [defaultAccount, setDefaultAccount] = useState(null);
     const [userBalance, setUserBalance] = useState(null);
@@ -34,15 +37,18 @@ const Mint = () => {
                 console.log("Initializing payment");
                 console.log(mintPrice)
                 //whitelist
-
+                //console.log(defaultAccount)
 
                 if (new Date(luanchWhite).getTime() < new Date().getTime()) {
                     console.log("whitelist");
-                    const test = "0xd0eF59F1cD8D5CF833dD49346D81E62A4b67E98e";
-                    //create proof
-                    // console.log(keccak256(toUtf8Bytes(test)));
-                    console.log(utils.keccak256(utils.toUtf8Bytes("example")))
-                    const proof = ["0xe3070ae6f7e6d30642a10bf83c36cf756d00ceb61081ef8bf200feeb8d561e2d", "0x5f244ac628663bf73532f83dbf0a8cf2d2b169e3efb532712bedf456c6f6f040", "0x3493838b58a646fdb14b2d9a652fae9e7a166c0ef3c9ab72b342000d23f04dc5", "0x5712507eeb3d7b48e5876f21fc871656c2379464b480c8e89c50c2a1e8f58ac5", "0x538698e669c6b633f2764614f41c448da80c79b14dd365802476865eca9c766b"];
+                    const leaves = addresses.map(x => utils.keccak256(x))
+                    const tree = new MerkleTree(leaves, keccak256, {sortPairs: true})
+                    const da = defaultAccount.toString();
+                    //console.log("da", da)
+                    const leaf = utils.keccak256(da);
+                    //console.log(leaf)
+                    const proof = tree.getProof(leaf).map(x => buf2hex(x.data));
+                    //console.log(proof)
                     let mintTransaction = await nftContract.mintAllowList(proof, mintAmount, { value: ethers.utils.parseEther(`${mintPrice}`) });
                     console.log("Please wait");
                     await mintTransaction.wait();
@@ -66,9 +72,10 @@ const Mint = () => {
         setMintAmount(e.target.value);
     }
 
-    // function keccak256(data) {
-    //     return '0x' + sha3.keccak_256(arrayify(data));
-    // }
+    const accountChangedHandler = (newAccount) => {
+        setDefaultAccount(newAccount);
+    }
+    window.ethereum.on('accountsChanged', accountChangedHandler);
 
     useEffect(() => {
 
@@ -76,7 +83,6 @@ const Mint = () => {
             window.ethereum.request({ method: 'eth_requestAccounts' })
                 .then(result => {
                     setDefaultAccount(result[0]);
-                    //console.log(result[0]);
                 })
         }
         //whitelist script

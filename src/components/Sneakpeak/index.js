@@ -12,8 +12,8 @@ const Sneakpeak = () => {
 
     
     const slides = [
-        {url: "https://seatbelt-on.com/images/3028.png"},
         {url: "https://seatbelt-on.com/images/3051.png"},
+        {url: "https://seatbelt-on.com/images/3028.png"},
         {url: "https://seatbelt-on.com/images/3111.png"}
     ];
     
