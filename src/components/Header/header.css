@@ -7,6 +7,7 @@
 .headerItem {
     /*display: inline;*/
     float: right;
+    max-height: 80px;
 }
 .headerItem a {
     display: block;
@@ -48,6 +49,7 @@
 
 #wallet {
     width: 80px;
+    max-width: 80px;
     height: 80px;
     margin: 0px 8px 0px 8px;
     border: none;
@@ -58,4 +60,18 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+#walletAddress {
+    font-size: large;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    color: #F5F7F9;
+    width: 80px;
+    max-width: 80px;
+    height: 80px;
+    margin: 0px 8px 0px 8px;
+    border: none;
+    text-decoration: none;
+    cursor: cursor;
+    background-color: transparent;
 }

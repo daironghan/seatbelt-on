@@ -7,6 +7,24 @@
     z-index: 2;
 
 }
+/*error message*/
+.errorContainer {
+    float: right;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    width: 200px;
+    height: 80px;
+    color: #32383a;
+    font-size: 14px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    transition: 0.5s ease-in-out;/*help*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /*ticket one*/
 .show-counter, .expired-notice{
     height: 1000px;
@@ -146,6 +164,7 @@
 }
 #mintBtn:disabled {
     background-image: url('../../../public/images/UI_3_Ticket\ button_mint_disable.svg');
+    cursor: cursor;
 }
 .publicMintContainer input {
     opacity: 0;

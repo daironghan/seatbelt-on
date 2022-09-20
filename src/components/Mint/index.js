@@ -15,6 +15,7 @@ const Mint = () => {
     const buf2hex = x => '0x' + x.toString('hex')
     const { addresses } = require("./Whitelist.js");
     const [errorMessage, setErrorMessage] = useState(null);
+    const [isAlertVisible, setIsAlertVisible] = useState(false);
     const [defaultAccount, setDefaultAccount] = useState(null);
     const [userBalance, setUserBalance] = useState(null);
     const [provider, setProvider] = useState(null);
@@ -23,8 +24,8 @@ const Mint = () => {
     const [seatsLeft, setSeatsLeft] = useState(3333);
     const [disable, setDisable] = useState(true);
 
-    const launchDate = new Date("2022/9/18 10:34:00");
-    const luanchWhite = new Date("2022/9/17 14:11:00");
+    const launchDate = new Date("2022/9/20 23:39:00");
+    const launchWhite = new Date("2022/9/20 23:38:00");
 
     const mintHandler = async () => {
         try {
@@ -39,7 +40,7 @@ const Mint = () => {
                 //whitelist
                 //console.log(defaultAccount)
 
-                if (new Date(luanchWhite).getTime() < new Date().getTime()) {
+                if (new Date(launchDate).getTime() > new Date().getTime()) {
                     console.log("whitelist");
                     const leaves = addresses.map(x => utils.keccak256(x))
                     const tree = new MerkleTree(leaves, keccak256, {sortPairs: true})
@@ -64,8 +65,12 @@ const Mint = () => {
                 }
             }
         } catch (error) {
-            console.log(error);
-            console.log("Please check if Metamask wallet is connected")
+            //console.log("Please check if Metamask wallet is connected")
+            setIsAlertVisible(true);
+            setErrorMessage(error.reason);
+            setTimeout(() => {
+                setIsAlertVisible(false);
+            }, 3000);
         }
     }
     const radioHandler = async (e) => {
@@ -94,11 +99,12 @@ const Mint = () => {
         script2.src = "https://cdn.jsdelivr.net/npm/keccak256@latest/keccak256.js"
         document.body.appendChild(script2)
 */
-        if (new Date(launchDate).getTime() < new Date().getTime()) {
+        if (new Date(launchWhite).getTime() < new Date().getTime()) {
             setDisable(false);
         } else {
             setDisable(true);
         }
+
 
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const nftContract = new ethers.Contract(contractAddress, abi, provider);
@@ -112,13 +118,27 @@ const Mint = () => {
 
     }, []);
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (new Date(launchWhite).getTime() < new Date().getTime()) {
+                setDisable(false);
+            } else {
+                setDisable(true);
+            }
+        }, 1000);
+        return () => clearInterval(interval);
+      }, []);
+
+
     return (
         <>
             <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
 
             <div className='mintContainer' id='mintContainer'>
-
-
+                {isAlertVisible && 
+                <div className='errorContainer'>
+                    {errorMessage}
+                </div>}
                 <CountdownTimer targetDate={launchDate} />
                 <img id='mintTicket' src={require('../../images/UI_3_Ticket3.png')} alt='mintTicket'></img>
                 <div className='publicMintContainer'>

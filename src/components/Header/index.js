@@ -9,6 +9,8 @@ const Header = () => {
 	const [userBalance, setUserBalance] = useState(null);
 	//const [connButtonText, setConnButtonText] = useState('Connect Wallet');
 	const [provider, setProvider] = useState(null);
+    const [walletAddress, setWalletAddress] = useState("");
+    const [walletStyle, setWalletStyle] = useState("wallet");
 
 	const connectWalletHandler = () => {
         console.log("connect wallet btn")
@@ -21,7 +23,6 @@ const Header = () => {
 			window.ethereum.request({ method: 'eth_requestAccounts'})
 			.then(result => {
                 accountChangedHandler(result[0])
-                console.log(result[0]);
 			})
 			.catch(error => {
 				setErrorMessage(error.message);
@@ -35,7 +36,15 @@ const Header = () => {
 
     const accountChangedHandler = (newAccount) => {
         setDefaultAccount(newAccount);
-        console.log("changed account")
+        if(newAccount!==null && newAccount.length!==0) {
+            const addressText = newAccount.toString().slice(0,5).concat("...")
+            setWalletAddress(addressText);
+            setWalletStyle("walletAddress")
+        } else {
+            setWalletStyle("wallet");
+            setWalletAddress("");
+        } 
+            
     }
 
     const chainChangedHandler = (chainID) => {
@@ -62,11 +71,12 @@ const Header = () => {
 	
 	return (
         <>
+        <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
 		<div className='headerContainer' id='headerContainer'>
             <ul id="navlist">
                 <li style={{float:'left'}} id="logo" className='headerItem'><a href='#headerContainer'></a></li>
                 <li  className='headerItem'>
-                    <button id="wallet" onClick={connectWalletHandler}></button>
+                    <button  id={walletStyle} onClick={connectWalletHandler}>{walletAddress}</button>
                 </li>
                 <li id="opensea" className='headerItem'><a href="contact.asp"></a></li>
                 <li id="twitter" className='headerItem'><a href="https://twitter.com/oseatbelt?s=11&t=PLKlEa57_vOAcgILg7NImw"  target="_blank"></a></li>

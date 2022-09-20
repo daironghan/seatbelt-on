@@ -10,6 +10,7 @@ const ImageSlider = ({ slides }) => {
         backgroundSize: "contain",
         backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
+        transition: "0.5s",
     };
     const getPrevious = () => {
         const isFirst = currentIndex === 0;

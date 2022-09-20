@@ -7,6 +7,8 @@ import {ethers, BigNumber} from 'ethers'
 import abi from '../abi.json';
 const ExpiredNotice = () => {
 
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [receiverAddress, setReceiverAddress] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
@@ -32,8 +34,12 @@ const ExpiredNotice = () => {
             window.location.reload(false);
           }
       } catch (error) {
-          console.log(error);
-          console.log("Please check if Metamask wallet is connected and reciever wallet address is valid")
+          //console.log("Please check if Metamask wallet is connected and reciever wallet address is valid")
+          setIsAlertVisible(true);
+            setErrorMessage(error.reason);
+            setTimeout(() => {
+                setIsAlertVisible(false);
+            }, 3000);
       }
   }
 
@@ -67,6 +73,10 @@ const ExpiredNotice = () => {
 
   return (
     <div className="expired-notice">
+      {isAlertVisible && 
+                  <div className='errorContainer'>
+                      {errorMessage}
+                  </div>}
       <img id='freeTicket' src={require('../../images/UI_3_Ticket2.png')} alt='ticket'></img> 
       <div className='freeMintContainer'>
         <p className='boardingTime'>2022/9/27 00:00:00</p>
