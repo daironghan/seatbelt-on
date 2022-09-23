@@ -6,12 +6,8 @@ import CountdownTimer from './CountdownTimer';
 import MerkleTree from 'merkletreejs';
 import { keccak256 } from 'ethers/lib/utils';
 
-// import { keccak256 } from "@ethersproject/keccak256";
-// import { toUtf8Bytes } from "@ethersproject/strings";
-
 const Mint = () => {
 
-    // const keccak256 = require('keccak256')
     const buf2hex = x => '0x' + x.toString('hex')
     const { addresses } = require("./Whitelist.js");
     const [errorMessage, setErrorMessage] = useState(null);
@@ -38,7 +34,7 @@ const Mint = () => {
                 console.log("Initializing payment");
                 console.log(mintPrice)
                 //whitelist
-                //console.log(defaultAccount)
+                console.log(defaultAccount)
 
                 if (new Date(launchDate).getTime() < new Date().getTime()) {
                     let mintTransaction = await nftContract.mintPublic(mintAmount, { value: ethers.utils.parseEther(`${mintPrice}`) });
@@ -89,33 +85,6 @@ const Mint = () => {
                     setDefaultAccount(result[0]);
                 })
         }
-        //whitelist script
-        /*
-        const script = document.createElement("script")
-        script.src = "https://cdn.jsdelivr.net/npm/merkletreejs@latest/merkletree.js"
-        document.body.appendChild(script)
-        const script2 = document.createElement("script2")
-        script2.src = "https://cdn.jsdelivr.net/npm/keccak256@latest/keccak256.js"
-        document.body.appendChild(script2)
-*/  
-        /*
-        if (new Date(launchWhite).getTime() < new Date().getTime()) {
-            setDisable(false);
-        } else {
-            setDisable(true);
-        }
-
-
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const nftContract = new ethers.Contract(contractAddress, abi, provider);
-        const fetchData = async () => {
-            let bg = await nftContract.totalSupply();
-            const sleft = 3333 - Number(bg);
-            setSeatsLeft(sleft);
-        }
-        
-        fetchData()
-        */
     }, []);
 
     useEffect(() => {
