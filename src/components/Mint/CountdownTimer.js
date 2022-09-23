@@ -3,10 +3,15 @@ import DateTimeDisplay from './DateTimeDisplay';
 import { useCountdown } from '../../hooks/useCountdown';
 import "./Mint.css";
 import {useState, useEffect} from 'react'
-import {ethers, BigNumber} from 'ethers'
+import {ethers, BigNumber, utils} from 'ethers'
 import abi from '../abi.json';
+import MerkleTree from 'merkletreejs';
+import { keccak256 } from 'ethers/lib/utils';
+
 const ExpiredNotice = () => {
 
+  const buf2hex = x => '0x' + x.toString('hex')
+  const { addresses } = require("./Whitelist.js");
   const [errorMessage, setErrorMessage] = useState(null);
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [defaultAccount, setDefaultAccount] = useState(null);
@@ -14,12 +19,14 @@ const ExpiredNotice = () => {
   const [userBalance, setUserBalance] = useState(null);
   const [provider, setProvider] = useState(null);
   const [mintAmount, setMintAmount] = useState(1);
-  const contractAddress = "0xa261C11aCa152da4dA61aaaEb0a44cE83af6bE34";
+  const contractAddress = "0x61200eFA998C8984371e2805fa96773135EE2E23";  /*contract*/
   const [seatsLeft, setSeatsLeft] = useState(3333);
+  const launchDate = new Date("2022/9/23 23:59:00"); /*change*/
 
   const freeMintHandler = async () => {
       try {
           if (window.ethereum) {
+            /*
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const nftContract = new ethers.Contract(contractAddress, abi, signer);
@@ -32,6 +39,32 @@ const ExpiredNotice = () => {
             await nftMint.wait();
             console.log(`Success, view transaction: https://rinkeby.etherscan.io/tx/${nftMint.hash}`);
             window.location.reload(false);
+            */
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const nftContract = new ethers.Contract(contractAddress, abi, signer);
+            const mintPrice = 0;
+            console.log("Initializing payment");
+            console.log(mintPrice)
+            if (new Date(launchDate).getTime() < new Date().getTime()) {
+                let mintTransaction = await nftContract.mintGive(receiverAddress, { value: ethers.utils.parseEther(`${mintPrice}`) });
+                console.log("Please wait");
+                await mintTransaction.wait();
+                console.log(`Success, view transaction: https://rinkeby.etherscan.io/tx/${mintTransaction.hash}`);
+                window.location.reload(false);
+            } else {
+                console.log("whitelist");
+                const leaves = addresses.map(x => utils.keccak256(x))
+                const tree = new MerkleTree(leaves, keccak256, {sortPairs: true})
+                const da = defaultAccount.toString();
+                const leaf = utils.keccak256(da);
+                const proof = tree.getProof(leaf).map(x => buf2hex(x.data));
+                let mintTransaction = await nftContract.mintGiveWhiteList(proof, mintAmount, { value: ethers.utils.parseEther(`${mintPrice}`) });
+                console.log("Please wait");
+                await mintTransaction.wait();
+                console.log(`Success, view transaction: https://rinkeby.etherscan.io/tx/${mintTransaction.hash}`);
+                window.location.reload(false);
+            }
           }
       } catch (error) {
           //console.log("Please check if Metamask wallet is connected and reciever wallet address is valid")
@@ -74,12 +107,12 @@ const ExpiredNotice = () => {
   return (
     <div className="expired-notice">
       {isAlertVisible && 
-                  <div className='errorContainer'>
+                  <div className='freeErrorContainer'>
                       {errorMessage}
                   </div>}
       <img id='freeTicket' src={require('../../images/UI_3_Ticket2.png')} alt='ticket'></img> 
       <div className='freeMintContainer'>
-        <p className='boardingTime'>2022/9/27 00:00:00</p>
+        <p className='boardingTime'>2022/9/27 16:00:00</p>
         <p className='seatsLeft'>{seatsLeft}/3333</p>
         <input id='freeReciever' onChange={receiverHandler} ></input>
         <button onClick={freeMintHandler} id='freeMintBtn'></button>
@@ -90,12 +123,12 @@ const ExpiredNotice = () => {
 
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
 
-  const contractAddress = "0xa261C11aCa152da4dA61aaaEb0a44cE83af6bE34";
+  const contractAddress = "0x61200eFA998C8984371e2805fa96773135EE2E23"; /*contract*/
   const [seatsLeft, setSeatsLeft] = useState(3333);
   
   useEffect (() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const nftContract = new ethers.Contract(contractAddress, abi, provider);
+        const nftContract = new ethers.Contract(contractAddress, abi, provider);  /*abi*/
         const fetchData = async () => {
             let bg = await nftContract.totalSupply();
             const sleft = 3333 - Number(bg);

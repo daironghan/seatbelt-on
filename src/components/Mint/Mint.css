@@ -9,13 +9,13 @@
 }
 /*error message*/
 .errorContainer {
-    float: right;
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-    width: 200px;
+    position: absolute;
+    top: 600px;
+    left: 840px;
+    width: 250px;
     height: 80px;
     color: #32383a;
+    background-color:#f5f7f9;
     font-size: 14px;
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
@@ -24,6 +24,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 3px;
+    border-color: #32383a;
+    padding: 5px;
+    overflow: hidden;
+}
+.freeErrorContainer {
+    position: absolute;
+    top: 232px;
+    right: 175px;
+    width: 250px;
+    height: 80px;
+    color: #32383a;
+    background-color:#f5f7f9;
+    font-size: 14px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    transition: 0.5s ease-in-out;/*help*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 3px;
+    border-color: #32383a;
+    padding: 5px;
+    overflow: hidden;
 }
 /*ticket one*/
 .show-counter, .expired-notice{
@@ -121,6 +152,9 @@
 #freeMintBtn:hover {
     background-image: url('../../../public/images/UI_3_Ticket\ button_freemint_hover.svg');
 }
+#freeMintBtn:active {
+    background-image: url("../../../public/images/UI_3_Ticket\ button_freemint_active.svg");
+}
 /*public mint*/
 #mintTicket {
     height: 1000px;
@@ -165,6 +199,9 @@
 #mintBtn:disabled {
     background-image: url('../../../public/images/UI_3_Ticket\ button_mint_disable.svg');
     cursor: cursor;
+}
+#mintBtn:active {
+    background-image: url("../../../public/images/UI_3_Ticket\ button_mint_action.svg");
 }
 .publicMintContainer input {
     opacity: 0;

@@ -23,6 +23,7 @@ const Header = () => {
 			window.ethereum.request({ method: 'eth_requestAccounts'})
 			.then(result => {
                 accountChangedHandler(result[0])
+                setDefaultAccount(result[0])
 			})
 			.catch(error => {
 				setErrorMessage(error.message);
@@ -37,7 +38,9 @@ const Header = () => {
     const accountChangedHandler = (newAccount) => {
         setDefaultAccount(newAccount);
         if(newAccount!==null && newAccount.length!==0) {
-            const addressText = newAccount.toString().slice(0,5).concat("...")
+            const backText = newAccount.toString().slice(38,42)
+            const addressText = newAccount.toString().slice(0,5).concat("...", backText)
+            
             setWalletAddress(addressText);
             setWalletStyle("walletAddress")
         } else {
@@ -58,6 +61,17 @@ const Header = () => {
         chainChangedHandler(chainID);
     });
     
+    
+    useEffect(() => {
+        if (window.ethereum) {
+            window.ethereum.request({ method: 'eth_requestAccounts' })
+                .then(result => {
+                    setDefaultAccount(result[0]);
+                    accountChangedHandler(result[0])
+                })
+        }
+    }, [])
+
     /*
     useEffect(() => {
         if(defaultAccount!==null){
