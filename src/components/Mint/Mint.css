@@ -200,7 +200,7 @@
     background-image: url('../../../public/images/UI_3_Ticket\ button_mint_disable.svg');
     cursor: cursor;
 }
-#mintBtn:active {
+#mintBtn:enabled:active {
     background-image: url("../../../public/images/UI_3_Ticket\ button_mint_action.svg");
 }
 .publicMintContainer input {

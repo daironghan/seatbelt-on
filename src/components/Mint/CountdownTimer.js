@@ -19,9 +19,9 @@ const ExpiredNotice = () => {
   const [userBalance, setUserBalance] = useState(null);
   const [provider, setProvider] = useState(null);
   const [mintAmount, setMintAmount] = useState(1);
-  const contractAddress = "0x61200eFA998C8984371e2805fa96773135EE2E23";  /*contract*/
+  const contractAddress = "0xAeD7347be8Fdfd81dc2EeD31F77d0B95debF46C3";  /*contract*/
   const [seatsLeft, setSeatsLeft] = useState(3333);
-  const launchDate = new Date("2022/9/23 23:59:00"); /*change*/
+  const launchDate = new Date("2022/9/23 18:00:00"); /*change*/
 
   const freeMintHandler = async () => {
       try {
@@ -141,7 +141,7 @@ window.ethereum.on('accountsChanged', accountChangedHandler);
 
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
 
-  const contractAddress = "0x61200eFA998C8984371e2805fa96773135EE2E23"; /*contract*/
+  const contractAddress = "0xAeD7347be8Fdfd81dc2EeD31F77d0B95debF46C3"; /*contract*/
   const [seatsLeft, setSeatsLeft] = useState(3333);
   
   useEffect (() => {
@@ -161,7 +161,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
 
         <img id='freeTicket' src={require('../../images/UI_3_Ticket1.png')} alt='ticket'></img> 
         <div className='counterContainer'>
-          <p className='boardingTime'>2022/9/27 00:00:00</p>
+          <p className='boardingTime'>2022/9/27 16:00:00</p>
           <p className='seatsLeft'>{seatsLeft}/3333</p>
           <div className='countUnitContainer'>
             <div className='counter-unit'>{days}</div>
