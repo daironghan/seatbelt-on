@@ -21,7 +21,7 @@ const ExpiredNotice = () => {
   const [mintAmount, setMintAmount] = useState(1);
   const contractAddress = "0xAeD7347be8Fdfd81dc2EeD31F77d0B95debF46C3";  /*contract*/
   const [seatsLeft, setSeatsLeft] = useState(3333);
-  const launchDate = new Date("2022/9/23 18:00:00"); /*change*/
+  const launchDate = new Date("2022/9/27 18:00:00"); /*change*/
 
   const freeMintHandler = async () => {
       try {
@@ -33,10 +33,9 @@ const ExpiredNotice = () => {
             const mintPrice = 0;
             console.log("Initializing payment");
             console.log(mintPrice)
-            console.log(receiverAddress)
             if (new Date(launchDate).getTime() < new Date().getTime()) {
                 console.log("public")
-                let mintTransaction = await nftContract.mintGive(receiverAddress, { value: ethers.utils.parseEther(`${mintPrice}`) });
+                let mintTransaction = await nftContract.mintGivePublic(receiverAddress, { value: ethers.utils.parseEther(`${mintPrice}`) });
                 console.log("Please wait");
                 await mintTransaction.wait();
                 console.log(`Success, view transaction: https://rinkeby.etherscan.io/tx/${mintTransaction.hash}`);

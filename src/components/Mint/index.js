@@ -30,13 +30,16 @@ const Mint = () => {
                 const provider = new ethers.providers.Web3Provider(window.ethereum);
                 const signer = provider.getSigner();
                 const nftContract = new ethers.Contract(contractAddress, abi, signer);
-                const mintPrice = 0.005 * mintAmount;
+                let mintPrice = 0.005 * mintAmount;
+                if(mintAmount == 5)
+                    mintPrice = 0.02
                 console.log("Initializing payment");
                 console.log(mintPrice)
                 //whitelist
                 console.log(defaultAccount)
 
                 if (new Date(launchDate).getTime() < new Date().getTime()) {
+                    console.log("public")
                     let mintTransaction = await nftContract.mintPublic(mintAmount, { value: ethers.utils.parseEther(`${mintPrice}`) });
                     console.log("Please wait");
                     await mintTransaction.wait();
@@ -61,6 +64,7 @@ const Mint = () => {
             }
         } catch (error) {
             //console.log("Please check if Metamask wallet is connected")
+            //console.log(error)
             setIsAlertVisible(true);
             setErrorMessage(error.reason);
             setTimeout(() => {
