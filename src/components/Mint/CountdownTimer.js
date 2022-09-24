@@ -15,7 +15,8 @@ const ExpiredNotice = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [defaultAccount, setDefaultAccount] = useState(null);
-  const [receiverAddress, setReceiverAddress] = useState("0x0000000000000000000000000000000000000000");
+  //const [receiverAddress, setReceiverAddress] = useState("0x0000000000000000000000000000000000000000");
+  const [receiverAddress, setReceiverAddress] = useState("");
   const [userBalance, setUserBalance] = useState(null);
   const [provider, setProvider] = useState(null);
   const [mintAmount, setMintAmount] = useState(1);
@@ -33,22 +34,42 @@ const ExpiredNotice = () => {
             const mintPrice = 0;
             console.log("Initializing payment");
             console.log(mintPrice)
+
+            if(receiverAddress.trim().length === 0){
+              setReceiverAddress("0x0000000000000000000000000000000000000000");
+            }
+            
             if (new Date(launchDate).getTime() < new Date().getTime()) {
-                console.log("public")
-                let mintTransaction = await nftContract.mintGivePublic(receiverAddress, { value: ethers.utils.parseEther(`${mintPrice}`) });
+                console.log("Public")
+                let mintTransaction;
+                if(receiverAddress.trim().length === 0){
+                  console.log("Empty Reciever Address");
+                  mintTransaction = await nftContract.mintGivePublic("0x0000000000000000000000000000000000000000", { value: ethers.utils.parseEther(`${mintPrice}`) });
+                }
+                else {
+                  mintTransaction = await nftContract.mintGivePublic(receiverAddress, { value: ethers.utils.parseEther(`${mintPrice}`) });
+                }
                 console.log("Please wait");
                 await mintTransaction.wait();
                 console.log(`Success, view transaction: https://rinkeby.etherscan.io/tx/${mintTransaction.hash}`);
                 window.location.reload(false);
             } else {
-                console.log("whitelist");
+                console.log("Whitelist");
                 const leaves = addresses.map(x => utils.keccak256(x))
                 const tree = new MerkleTree(leaves, keccak256, {sortPairs: true})
                 console.log(defaultAccount)
                 const da = defaultAccount.toString();
                 const leaf = utils.keccak256(da);
                 const proof = tree.getProof(leaf).map(x => buf2hex(x.data));
-                let mintTransaction = await nftContract.mintGiveWhitelist(receiverAddress, proof, { value: ethers.utils.parseEther(`${mintPrice}`) });
+                let mintTransaction;
+                if(receiverAddress.trim().length === 0){
+                  console.log("Empty Reciever Address");
+                  mintTransaction = await nftContract.mintGivePublic("0x0000000000000000000000000000000000000000", { value: ethers.utils.parseEther(`${mintPrice}`) });
+                }
+                else {
+                  mintTransaction = await nftContract.mintGivePublic(receiverAddress, { value: ethers.utils.parseEther(`${mintPrice}`) });
+                }
+                //let mintTransaction = await nftContract.mintGiveWhitelist(receiverAddress, proof, { value: ethers.utils.parseEther(`${mintPrice}`) });
                 console.log("Please wait");
                 await mintTransaction.wait();
                 console.log(`Success, view transaction: https://rinkeby.etherscan.io/tx/${mintTransaction.hash}`);
@@ -69,15 +90,18 @@ const ExpiredNotice = () => {
   const receiverHandler = (e) => {
     //console.log(e.target.value);
     setReceiverAddress(e.target.value);
+
     if(e.target.value.trim().length === 0){
-      setReceiverAddress("0x0000000000000000000000000000000000000000");
+      //setReceiverAddress("0x0000000000000000000000000000000000000000");
     }
     //console.log("ra", receiverAddress)
   }
+
   const accountChangedHandler = (newAccount) => {
     setDefaultAccount(newAccount);
-}
-window.ethereum.on('accountsChanged', accountChangedHandler);
+  }
+
+  window.ethereum.on('accountsChanged', accountChangedHandler);
 
   useEffect(() => {
 
@@ -202,8 +226,3 @@ const CountdownTimer = ({ targetDate }) => {
 };
 
 export default CountdownTimer;
-/*
-        <DateTimeDisplay value={days} type={'Days'} isDanger={days <= 3} />
-        <DateTimeDisplay value={hours} type={'Hours'} isDanger={false} />
-        <DateTimeDisplay value={minutes} type={'Mins'} isDanger={false} />
-        <DateTimeDisplay value={seconds} type={'Seconds'} isDanger={false} />*/
