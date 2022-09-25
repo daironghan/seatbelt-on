@@ -11,11 +11,11 @@ const Team = () => {
                         
                     </div>
                     <p>
-                        "Seatbelt On! is a multi-field team. Mich as the art developer in this project hopes to express her love of going overseas and traveling through her illustrations. This project aims to bring back that feeling of having a trip or taking a flight to everyone, especially when the post-covid began.<br /><br />
+                        <i>Seatbelt On!</i> is a multi-field team. Mich as the art developer in this project hopes to express her love of going overseas and traveling through her illustrations. This project aims to bring back that feeling of having a trip or taking a flight to everyone, especially when the post-covid began.<br /><br />
 
-                        Standing with Mich as the co-founder is Darren and a fantastic engineering group. As a team, we’re not only the TRUE believers in Web3 but also the travel lover in the real world. Read below to know more about us, and feel free to contact us.<br /><br />
+                        Standing with Mich as the co-founder is Darren and a fantastic engineering group. As a team, we're not only the TRUE believers in Web3 but also the travel lover in the real world. Read below to know more about us, and feel free to contact us.<br /><br />
 
-                        Get tickets, and fly with us!"
+                        Get tickets, and fly with us!
                         </p>
                 </div>
             <div className='teamContainer' id='teamContainer'>

@@ -22,7 +22,7 @@ const ExpiredNotice = () => {
   const [mintAmount, setMintAmount] = useState(1);
   const contractAddress = "0xAeD7347be8Fdfd81dc2EeD31F77d0B95debF46C3";  /*contract*/
   const [seatsLeft, setSeatsLeft] = useState(3333);
-  const launchDate = new Date("2022/9/27 18:00:00"); /*change*/
+  const launchDate = new Date("2022/9/27 18:00:00"); /*9/27 18*/
 
   const freeMintHandler = async () => {
       try {
@@ -75,6 +75,12 @@ const ExpiredNotice = () => {
                 console.log(`Success, view transaction: https://rinkeby.etherscan.io/tx/${mintTransaction.hash}`);
                 window.location.reload(false);
             }
+          } else {
+              setIsAlertVisible(true);
+              setErrorMessage("Please check if Metamask is installed and connected");
+              setTimeout(() => {
+                  setIsAlertVisible(false);
+              }, 3000);
           }
       } catch (error) {
           //console.log("Please check if Metamask wallet is connected and reciever wallet address is valid")
@@ -101,7 +107,10 @@ const ExpiredNotice = () => {
     setDefaultAccount(newAccount);
   }
 
-  window.ethereum.on('accountsChanged', accountChangedHandler);
+  if(window.ethereum) {
+    window.ethereum.on('accountsChanged', accountChangedHandler);
+  }
+  
 
   useEffect(() => {
 
@@ -114,8 +123,10 @@ const ExpiredNotice = () => {
   }, []);
 
   useEffect(() => {
+
     
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        //const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const provider = new ethers.providers.EtherscanProvider(4,"G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4");
         const nftContract = new ethers.Contract(contractAddress, abi, provider);
         const fetchData = async () => {
             let bg = await nftContract.totalSupply();
@@ -124,14 +135,15 @@ const ExpiredNotice = () => {
         }
         // call the function
         fetchData()
-
+    
     
   }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
 
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        //const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const provider = new ethers.providers.EtherscanProvider(4,"G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4"); /*change chain id*/
         const nftContract = new ethers.Contract(contractAddress, abi, provider);
         const fetchData = async () => {
             let bg = await nftContract.totalSupply();
@@ -168,15 +180,17 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
   const [seatsLeft, setSeatsLeft] = useState(3333);
   
   useEffect (() => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const nftContract = new ethers.Contract(contractAddress, abi, provider);  /*abi*/
+
+    const provider = new ethers.providers.EtherscanProvider(4,"G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4"); /*change chain id*/
+        const nftContract = new ethers.Contract(contractAddress, abi, provider);
         const fetchData = async () => {
             let bg = await nftContract.totalSupply();
-            const sleft = 3333 - Number(bg);
+            const sleft = 3333-Number(bg);
             setSeatsLeft(sleft);
         }
 
         fetchData()
+
   }, []);
 
   return (

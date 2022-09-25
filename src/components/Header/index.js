@@ -13,7 +13,7 @@ const Header = () => {
     const [walletStyle, setWalletStyle] = useState("wallet");
 
 	const connectWalletHandler = () => {
-        console.log("connect wallet btn")
+        //console.log("connect wallet btn")
 
 		if (window.ethereum && window.ethereum.isMetaMask) {
 			// set ethers provider
@@ -55,13 +55,14 @@ const Header = () => {
         console.log("Please stay on eth chain.")
     }
 
-    window.ethereum.on('accountsChanged', accountChangedHandler);
-    
-    window.ethereum.on('chainChanged', (chainID) => {
-        chainChangedHandler(chainID);
-    });
-    
-    
+    if(window.ethereum) {
+        window.ethereum.on('accountsChanged', accountChangedHandler);
+        window.ethereum.on('chainChanged', (chainID) => {
+            chainChangedHandler(chainID);
+        });
+    }
+
+
     useEffect(() => {
         if (window.ethereum) {
             window.ethereum.request({ method: 'eth_requestAccounts' })
