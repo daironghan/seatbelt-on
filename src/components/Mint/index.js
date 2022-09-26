@@ -43,7 +43,7 @@ const Mint = () => {
                     let mintTransaction = await nftContract.mintPublic(mintAmount, { value: ethers.utils.parseEther(`${mintPrice}`) });
                     console.log("Please wait");
                     await mintTransaction.wait();
-                    console.log(`Success, view transaction: https://rinkeby.etherscan.io/tx/${mintTransaction.hash}`);
+                    console.log(`Success, view transaction: https://etherscan.io/tx/${mintTransaction.hash}`);
                     window.location.reload(false);
                 } else {
                     console.log("Whitelist");
