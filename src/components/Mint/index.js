@@ -16,7 +16,7 @@ const Mint = () => {
     const [userBalance, setUserBalance] = useState(null);
     const [provider, setProvider] = useState(null);
     const [mintAmount, setMintAmount] = useState("1");
-    const contractAddress = "0xAeD7347be8Fdfd81dc2EeD31F77d0B95debF46C3"; /*contract*/
+    const contractAddress = "0x58fc06333B5322f7cd07Adf22F28F275307a9908"; /*contract*/
     const [seatsLeft, setSeatsLeft] = useState(3333);
     const [disable, setDisable] = useState(true);
 
@@ -36,7 +36,7 @@ const Mint = () => {
                 console.log("Initializing payment");
                 console.log(mintPrice)
                 //whitelist
-                console.log(defaultAccount)
+                //console.log("default account", defaultAccount)
 
                 if (new Date(launchDate).getTime() < new Date().getTime()) {
                     console.log("Public")
@@ -48,6 +48,7 @@ const Mint = () => {
                 } else {
                     console.log("Whitelist");
                     const leaves = addresses.map(x => utils.keccak256(x))
+                    //console.log("leaves")
                     const tree = new MerkleTree(leaves, keccak256, {sortPairs: true})
                     const da = defaultAccount.toString();
                     //console.log("da", da)
@@ -58,10 +59,11 @@ const Mint = () => {
                     let mintTransaction = await nftContract.mintAllowList(proof, mintAmount, { value: ethers.utils.parseEther(`${mintPrice}`) });
                     console.log("Please wait");
                     await mintTransaction.wait();
-                    console.log(`Success, view transaction: https://rinkeby.etherscan.io/tx/${mintTransaction.hash}`);
+                    console.log(`Success, view transaction: https://etherscan.io/tx/${mintTransaction.hash}`);/*change*/
                     window.location.reload(false);
                 }
             } else {
+                
                 setIsAlertVisible(true);
                 setErrorMessage("Please check if Metamask is installed and connected");
                 setTimeout(() => {
@@ -71,6 +73,7 @@ const Mint = () => {
 
         } catch (error) {
             //console.log("Please check if Metamask wallet is connected")
+            //console.log(error);
             setIsAlertVisible(true);
             setErrorMessage(error.reason);
             setTimeout(() => {
@@ -104,7 +107,7 @@ const Mint = () => {
         const interval = setInterval(() => {
 
             //const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const provider = new ethers.providers.EtherscanProvider(4,"G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4"); /*change chain id*/
+            const provider = new ethers.providers.EtherscanProvider(1,"G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4"); /*change chain id*/
             const nftContract = new ethers.Contract(contractAddress, abi, provider);
             const fetchData = async () => {
                 let bg = await nftContract.totalSupply();
@@ -138,8 +141,7 @@ const Mint = () => {
                 <img id='mintTicket' src={require('../../images/UI_3_Ticket3.png')} alt='mintTicket'></img>
                 <div className='publicMintContainer'>
                     <p className='boardingTime'>2022/9/27 16:00:00</p>
-                    {/* <p className='seatsLeft'>{seatsLeft}/3333</p> */}
-                    <p className='seatsLeft'>3333/3333</p>
+                    <p className='seatsLeft'>{seatsLeft}/3333</p>
                     <div className='radioContainer'>
                         <div className='inputContainer'>
                             <input className='radioBtn' type="radio" value="1" onChange={radioHandler} name="num" checked={(mintAmount == "1")} />

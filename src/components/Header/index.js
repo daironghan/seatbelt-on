@@ -64,12 +64,14 @@ const Header = () => {
 
 
     useEffect(() => {
-        if (window.ethereum) {
+        if (window.ethereum && defaultAccount==null) {
             window.ethereum.request({ method: 'eth_requestAccounts' })
                 .then(result => {
                     setDefaultAccount(result[0]);
                     accountChangedHandler(result[0])
                 })
+        }else {
+            accountChangedHandler(defaultAccount);
         }
     }, [])
 

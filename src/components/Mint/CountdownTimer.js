@@ -20,7 +20,7 @@ const ExpiredNotice = () => {
   const [userBalance, setUserBalance] = useState(null);
   const [provider, setProvider] = useState(null);
   const [mintAmount, setMintAmount] = useState(1);
-  const contractAddress = "0xAeD7347be8Fdfd81dc2EeD31F77d0B95debF46C3";  /*contract*/
+  const contractAddress = "0x58fc06333B5322f7cd07Adf22F28F275307a9908";  /*contract*/
   const [seatsLeft, setSeatsLeft] = useState(3333);
   const launchDate = new Date("2022/9/27 18:00:00"); /*9/27 18*/
 
@@ -51,7 +51,7 @@ const ExpiredNotice = () => {
                 }
                 console.log("Please wait");
                 await mintTransaction.wait();
-                console.log(`Success, view transaction: https://rinkeby.etherscan.io/tx/${mintTransaction.hash}`);
+                console.log(`Success, view transaction: https://etherscan.io/tx/${mintTransaction.hash}`);
                 window.location.reload(false);
             } else {
                 console.log("Whitelist");
@@ -64,15 +64,15 @@ const ExpiredNotice = () => {
                 let mintTransaction;
                 if(receiverAddress.trim().length === 0){
                   console.log("Empty Reciever Address");
-                  mintTransaction = await nftContract.mintGivePublic("0x0000000000000000000000000000000000000000", { value: ethers.utils.parseEther(`${mintPrice}`) });
+                  mintTransaction = await nftContract.mintGiveWhitelist("0x0000000000000000000000000000000000000000", proof,{ value: ethers.utils.parseEther(`${mintPrice}`) });
                 }
                 else {
-                  mintTransaction = await nftContract.mintGivePublic(receiverAddress, { value: ethers.utils.parseEther(`${mintPrice}`) });
+                  mintTransaction = await nftContract.mintGiveWhitelist(receiverAddress, proof, { value: ethers.utils.parseEther(`${mintPrice}`) });
                 }
                 //let mintTransaction = await nftContract.mintGiveWhitelist(receiverAddress, proof, { value: ethers.utils.parseEther(`${mintPrice}`) });
                 console.log("Please wait");
                 await mintTransaction.wait();
-                console.log(`Success, view transaction: https://rinkeby.etherscan.io/tx/${mintTransaction.hash}`);
+                console.log(`Success, view transaction: https://etherscan.io/tx/${mintTransaction.hash}`); /*change*/
                 window.location.reload(false);
             }
           } else {
@@ -126,7 +126,7 @@ const ExpiredNotice = () => {
 
     
         //const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const provider = new ethers.providers.EtherscanProvider(4,"G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4");
+        const provider = new ethers.providers.EtherscanProvider(1,"G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4");
         const nftContract = new ethers.Contract(contractAddress, abi, provider);
         const fetchData = async () => {
             let bg = await nftContract.totalSupply();
@@ -143,7 +143,7 @@ const ExpiredNotice = () => {
     const interval = setInterval(() => {
 
         //const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const provider = new ethers.providers.EtherscanProvider(4,"G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4"); /*change chain id*/
+        const provider = new ethers.providers.EtherscanProvider(1,"G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4"); /*change chain id*/
         const nftContract = new ethers.Contract(contractAddress, abi, provider);
         const fetchData = async () => {
             let bg = await nftContract.totalSupply();
@@ -176,12 +176,12 @@ const ExpiredNotice = () => {
 
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
 
-  const contractAddress = "0xAeD7347be8Fdfd81dc2EeD31F77d0B95debF46C3"; /*contract*/
+  const contractAddress = "0x58fc06333B5322f7cd07Adf22F28F275307a9908"; /*contract*/
   const [seatsLeft, setSeatsLeft] = useState(3333);
   
   useEffect (() => {
 
-    const provider = new ethers.providers.EtherscanProvider(4,"G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4"); /*change chain id*/
+    const provider = new ethers.providers.EtherscanProvider(1,"G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4"); /*change chain id*/
         const nftContract = new ethers.Contract(contractAddress, abi, provider);
         const fetchData = async () => {
             let bg = await nftContract.totalSupply();
@@ -199,8 +199,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
         <img id='freeTicket' src={require('../../images/UI_3_Ticket1.png')} alt='ticket'></img> 
         <div className='counterContainer'>
           <p className='boardingTime'>2022/9/27 16:00:00</p>
-          {/* <p className='seatsLeft'>{seatsLeft}/3333</p> */}
-          <p className='seatsLeft'>3333/3333</p>
+          <p className='seatsLeft'>{seatsLeft}/3333</p>
           <div className='countUnitContainer'>
             <div className='counter-unit'>{days}</div>
             <div className='counter-unit'>{hours}</div>
