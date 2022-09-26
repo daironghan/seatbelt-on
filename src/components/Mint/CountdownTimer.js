@@ -199,7 +199,8 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
         <img id='freeTicket' src={require('../../images/UI_3_Ticket1.png')} alt='ticket'></img> 
         <div className='counterContainer'>
           <p className='boardingTime'>2022/9/27 16:00:00</p>
-          <p className='seatsLeft'>{seatsLeft}/3333</p>
+          {/* <p className='seatsLeft'>{seatsLeft}/3333</p> */}
+          <p className='seatsLeft'>3333/3333</p>
           <div className='countUnitContainer'>
             <div className='counter-unit'>{days}</div>
             <div className='counter-unit'>{hours}</div>
