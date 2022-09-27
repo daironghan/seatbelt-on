@@ -152,8 +152,11 @@
 #freeMintBtn:hover {
     background-image: url('../../../public/images/UI_3_Ticket\ button_freemint_hover.svg');
 }
-#freeMintBtn:active {
+#freeMintBtn:enabled:active {
     background-image: url("../../../public/images/UI_3_Ticket\ button_freemint_active.svg");
+}
+#freeMintBtn:disabled {
+    background-image: url("../../../public/images/UI_3_Ticket\ button_freemint_disable.svg");
 }
 /*public mint*/
 #mintTicket {

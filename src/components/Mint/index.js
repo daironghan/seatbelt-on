@@ -113,16 +113,18 @@ const Mint = () => {
                 let bg = await nftContract.totalSupply();
                 const sleft = 3333 - Number(bg);
                 setSeatsLeft(sleft);
+                
             }
 
             fetchData()
 
             if (new Date(launchWhite).getTime() < new Date().getTime()) {
-                setDisable(false);
+                setDisable(true);
             } else {
                 setDisable(true);
             }
 
+            
         }, 1000);
         return () => clearInterval(interval);
     }, []);
@@ -141,7 +143,8 @@ const Mint = () => {
                 <img id='mintTicket' src={require('../../images/UI_3_Ticket3.png')} alt='mintTicket'></img>
                 <div className='publicMintContainer'>
                     <p className='boardingTime'>2022/9/27 16:00:00</p>
-                    <p className='seatsLeft'>{seatsLeft}/3333</p>
+                    {/* <p className='seatsLeft'>{seatsLeft}/3333</p> */}
+                    <p className='seatsLeft'>Sold Out</p> 
                     <div className='radioContainer'>
                         <div className='inputContainer'>
                             <input className='radioBtn' type="radio" value="1" onChange={radioHandler} name="num" checked={(mintAmount == "1")} />
