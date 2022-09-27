@@ -133,6 +133,9 @@
     line-height: 30px;
     width: 330px;
 }
+.freeMintContainer .seatsLeft {
+    margin-right: 45px;
+}
 #freeMintBtn {
     position: absolute;
     width: 80px;
@@ -267,7 +270,7 @@
     margin-left: 230px;
 }
 .publicMintContainer .seatsLeft {
-    margin-right: 20px;
+    margin-right: 33px;
     margin-top: 13px;
 }
 
