@@ -20,8 +20,8 @@ const Mint = () => {
     const [seatsLeft, setSeatsLeft] = useState(3333);
     const [disable, setDisable] = useState(true);
 
-    const launchDate = new Date("2022/9/27 18:00:00");/*27 18:00*/
-    const launchWhite = new Date("2022/9/27 16:00:00");/*27 16:00*/
+    const launchDate = new Date("2022-09-27T18:00:00.000+08:00");/*27 18:00*/
+    const launchWhite = new Date("2022-09-27T16:00:00.000+08:00");/*27 16:00*/
 
     const mintHandler = async () => {
         try {
@@ -31,7 +31,7 @@ const Mint = () => {
                 const signer = provider.getSigner();
                 const nftContract = new ethers.Contract(contractAddress, abi, signer);
                 let mintPrice = 0.005 * mintAmount;
-                if(mintAmount == 5)
+                if (mintAmount == 5)
                     mintPrice = 0.02
                 console.log("Initializing payment");
                 console.log(mintPrice)
@@ -49,7 +49,7 @@ const Mint = () => {
                     console.log("Whitelist");
                     const leaves = addresses.map(x => utils.keccak256(x))
                     //console.log("leaves")
-                    const tree = new MerkleTree(leaves, keccak256, {sortPairs: true})
+                    const tree = new MerkleTree(leaves, keccak256, { sortPairs: true })
                     const da = defaultAccount.toString();
                     //console.log("da", da)
                     const leaf = utils.keccak256(da);
@@ -63,7 +63,7 @@ const Mint = () => {
                     window.location.reload(false);
                 }
             } else {
-                
+
                 setIsAlertVisible(true);
                 setErrorMessage("Please check if Metamask is installed and connected");
                 setTimeout(() => {
@@ -88,10 +88,10 @@ const Mint = () => {
     const accountChangedHandler = (newAccount) => {
         setDefaultAccount(newAccount);
     }
-    if(window.ethereum) {
+    if (window.ethereum) {
         window.ethereum.on('accountsChanged', accountChangedHandler);
     }
-    
+
 
     useEffect(() => {
 
@@ -107,7 +107,7 @@ const Mint = () => {
         const interval = setInterval(() => {
 
             //const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const provider = new ethers.providers.EtherscanProvider(1,"G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4"); /*change chain id*/
+            const provider = new ethers.providers.EtherscanProvider(1, "G6EH7UQ7MCX7ZVI44G344MWTWRAAIF6RW4"); /*change chain id*/
             const nftContract = new ethers.Contract(contractAddress, abi, provider);
             const fetchData = async () => {
                 let bg = await nftContract.totalSupply();
@@ -125,7 +125,7 @@ const Mint = () => {
 
         }, 1000);
         return () => clearInterval(interval);
-      }, []);
+    }, []);
 
 
     return (
@@ -133,10 +133,10 @@ const Mint = () => {
             <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
 
             <div className='mintContainer' id='mintContainer'>
-                {isAlertVisible && 
-                <div className='errorContainer'>
-                    {errorMessage}
-                </div>}
+                {isAlertVisible &&
+                    <div className='errorContainer'>
+                        {errorMessage}
+                    </div>}
                 <CountdownTimer targetDate={launchWhite} />
                 <img id='mintTicket' src={require('../../images/UI_3_Ticket3.png')} alt='mintTicket'></img>
                 <div className='publicMintContainer'>
