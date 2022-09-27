@@ -95,7 +95,7 @@ const Header = () => {
                 <li  className='headerItem'>
                     <button  id={walletStyle} onClick={connectWalletHandler}>{walletAddress}</button>
                 </li>
-                <li id="opensea" className='headerItem'><a href="contact.asp"></a></li>
+                <li id="opensea" className='headerItem'><a href="https://opensea.io/zh-TW/collection/seatbelt-on" target="_blank"></a></li>
                 <li id="twitter" className='headerItem'><a href="https://twitter.com/oseatbelt?s=11&t=PLKlEa57_vOAcgILg7NImw"  target="_blank"></a></li>
             </ul>
         </div>
